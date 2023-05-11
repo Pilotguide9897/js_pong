@@ -1,0 +1,67 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #333;
+    
+}
+
+.paddle {
+    --position: 50;
+    /* We will be able to change this variable using our JavaScript */
+
+
+    position: absolute; 
+    background-color: white;
+    width: 1vh;
+    height: 10vh;
+    top: calc(var(--position) * 1vh);
+    transform: translateY(-50%);
+    border-radius: 7px;
+}
+
+.paddle.left {
+    left: 1vw;
+}
+
+.paddle.right{
+    right: 1vw;
+}
+
+.ball {
+    --x: 50;
+    --y: 50;
+    position: absolute; 
+    background-color: white;
+    left: calc(var(--x) * 1vh); 
+    top: calc(var(--y) * 1vh);
+    transform: translate(-50%, -50%);
+    width: 2.5vh;
+    height: 2.5vh;
+    border-radius: 50%;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 7vh;
+    color: burlywood;
+}
+
+/* We can select all of the children of the score */
+.score > * {
+    flex-grow: 1;
+    /* flex basis defines the default size of a flex item. This property works in conjunction with flex grow to determine how the available space is distributed among flex items. */
+    flex-basis: 0;
+    padding: 0 2vh;
+    margin: 1vh 0;
+    opacity: .5;
+}
+
+.score > :first-child {
+    text-align: right;
+    border-right: .5vh solid burlywood;
+}
